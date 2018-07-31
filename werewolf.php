@@ -7,21 +7,20 @@ $version = "";
 
 
  if($_POST['userid']) {
-     setcookie("userid", $_POST['userid'],time()+60*60*24*365);
-     setcookie("passwd", $_POST['passwd'],time()+60*60*24*365);
-     setcookie("from", $_POST['from'],time()+60*60*24*365);
-     setcookie("board", $_POST['board'],time()+60*60*24*30);
-     setcookie("role", $_POST['role'],time()+60*60*24*30);
 
      $role = $_POST['role'];
      $userid = $_POST['userid'];
      $passwd =  $_POST['passwd'];
      //$from = $_POST['from'];
-
      // sanitize
      $from = str_replace(array("\r", "\n"), '',  $_POST['from']);
-
      $board = $_POST['board'];
+
+     setcookie("userid", $userid,time()+60*60*24*365);
+     setcookie("passwd", $passwd,time()+60*60*24*365);
+     setcookie("from", $from,time()+60*60*24*365);
+     setcookie("board", $board,time()+60*60*24*30);
+     setcookie("role", $role,time()+60*60*24*30);
 
      $who = str_replace(" ","_", $_POST['who']);
 
