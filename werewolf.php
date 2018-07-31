@@ -4,6 +4,7 @@
 $email = "pbmserv@gamerz.net";
 $version = "";
 //$email = "tonyzito@gmail.com";
+$bgcolor = sprintf( "#%02X", mt_rand( 0x88, 0xFF )) . sprintf( "%02X", mt_rand( 0x88, 0xFF )) . sprintf( "%02X", mt_rand( 0x88, 0xFF ));
 
  if($_POST['userid']) {
 
@@ -44,19 +45,16 @@ $version = "";
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
   <title>werewolf PBEM form</title>
-  <? $color = array ('a','b','c','d','e','f');
-     $bg['r']=$color[array_rand($color)];
-     $bg['g']=$color[array_rand($color)];
-     $bg['b']=$color[array_rand($color)];
-  ?>
+
 </head>
-<body bgcolor="#<?= $bg['r']?><?=$bg['g']?><?=$bg['g']?><?=$bg['b']?><?=$bg['b']?><?= $bg['r']?>">
+<body bgcolor="<? echo $bgcolor ?>">
 <font size="+2"><b>Werewolf PbEM Submission Form</b></font><br />
 <font size="-1" color="#555555"><i>v. 1.2 -- if it's your first time here, or you're looking for a concise run-down of the rules, <a href="ww_intro.php">click here.</a></i></font>
 <br />
 <? if ($version == "2") { ?>
 <b>NOTE: THIS FORM IS CURRENTLY POINTING TO AN EXPERIMENTAL VERSION OF WEREWOLF</b>
 <? } ?>
+
 <form method="post">
 <p />
 <table width="550">
