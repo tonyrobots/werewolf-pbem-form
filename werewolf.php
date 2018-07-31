@@ -1,5 +1,4 @@
 <?
- //include("include/googleImage.php");
 
 #set the email addy of the PbEM server here:
 $email = "pbmserv@gamerz.net";
@@ -17,13 +16,17 @@ $version = "";
      $role = $_POST['role'];
      $userid = $_POST['userid'];
      $passwd =  $_POST['passwd'];
-     $from = $_POST['from'];
+     //$from = $_POST['from'];
+
+     // sanitize
+     $from = str_replace(array("\r", "\n"), '',  $_POST['from']);
+
      $board = $_POST['board'];
-     
+
      $who = str_replace(" ","_", $_POST['who']);
-	 
+
      if ($_POST['debug'] || $_POST['upd']) { $debug = "1"; }
-     
+
      if ($_POST['command'] == "list") {
         $subject = "werewolf list";
      } else {
@@ -40,14 +43,16 @@ $version = "";
 ?>
 <html>
 <head>
-<title>werewolf PBEM form</title>
-<? $color = array ('b','c','d','e','f','a');
-   $bg['r']=$color[array_rand($color)];
-   $bg['g']=$color[array_rand($color)];
-   $bg['b']=$color[array_rand($color)];
-?>
-   
-<body bgcolor="#<?= $bg['r']?>b<?=$bg['g']?>d<?=$bg['b']?>7">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>werewolf PBEM form</title>
+  <? $color = array ('a','b','c','d','e','f');
+     $bg['r']=$color[array_rand($color)];
+     $bg['g']=$color[array_rand($color)];
+     $bg['b']=$color[array_rand($color)];
+  ?>
+</head>
+<body bgcolor="#<?= $bg['r']?><?=$bg['g']?><?=$bg['g']?><?=$bg['b']?><?=$bg['b']?><?= $bg['r']?>">
 <font size="+2"><b>Werewolf PbEM Submission Form</b></font><br />
 <font size="-1" color="#555555"><i>v. 1.2 -- if it's your first time here, or you're looking for a concise run-down of the rules, <a href="ww_intro.php">click here.</a></i></font>
 <br />
@@ -139,4 +144,3 @@ This game is normally played solely over email, but I made this form to make thi
 </div></p>
 </body>
 </html>
-
